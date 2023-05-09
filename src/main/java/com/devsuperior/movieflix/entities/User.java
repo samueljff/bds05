@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -31,6 +32,9 @@ public class User implements UserDetails, Serializable {
 	private String name;
 	private String email;
 	private String password;
+	
+	@OneToMany(mappedBy = "user")
+	Set<Review> reviews = new HashSet<>();
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_user_role",
@@ -78,6 +82,14 @@ public class User implements UserDetails, Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Set<Review> getReviews() {
+		return reviews;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
 	@Override
