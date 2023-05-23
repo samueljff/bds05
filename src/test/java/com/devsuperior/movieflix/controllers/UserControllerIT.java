@@ -27,7 +27,6 @@ public class UserControllerIT {
 	
 	@Autowired
 	private TokenUtil tokenUtil;
-
 	private String visitorUsername;
 	private String visitorPassword;
 	private String memberUsername;
@@ -48,7 +47,7 @@ public class UserControllerIT {
 		String accessToken = tokenUtil.obtainAccessToken(mockMvc, visitorUsername, visitorPassword);
 
 		ResultActions result =
-				mockMvc.perform(get("/users/profile")
+				mockMvc.perform(get("/users/ROLE_VISITOR")
 					.header("Authorization", "Bearer " + accessToken)
 					.accept(MediaType.APPLICATION_JSON));
 		
@@ -64,7 +63,7 @@ public class UserControllerIT {
 		String accessToken = tokenUtil.obtainAccessToken(mockMvc, memberUsername, memberPassword);
 
 		ResultActions result =
-				mockMvc.perform(get("/users/profile")
+				mockMvc.perform(get("/users/ROLE_MEMBER")
 					.header("Authorization", "Bearer " + accessToken)
 					.accept(MediaType.APPLICATION_JSON));
 		

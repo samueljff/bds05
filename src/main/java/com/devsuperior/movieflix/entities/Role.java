@@ -16,14 +16,14 @@ public class Role implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String Authority;
+	private String authority;
 	
 	public Role() {
 	}
 
 	public Role(long id, String authority) {
 		this.id = id;
-		Authority = authority;
+		this.authority = authority;
 	}
 
 	public long getId() {
@@ -35,11 +35,11 @@ public class Role implements Serializable {
 	}
 
 	public String getAuthority() {
-		return Authority;
+		return authority;
 	}
 
 	public void setAuthority(String authority) {
-		Authority = authority;
+		this.authority = authority;
 	}
 
 	@Override
